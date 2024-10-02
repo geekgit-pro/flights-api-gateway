@@ -2,6 +2,7 @@ const express = require('express');
 const { PORT } = require('./config');
 const { ServerConfig, Logger } = require('./config')
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
