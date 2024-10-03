@@ -2,9 +2,10 @@ const { UserRepository } = require('../repositories');
 const AppError = require('../utils/errors/app-error');
 const { StatusCodes } = require('http-status-codes');
 
+
 const userRepository = new UserRepository();
 
-async function createUser(data) {
+async function signUp(data) {
     try {
         const user = await userRepository.create(data);
         return user;
@@ -24,6 +25,8 @@ async function createUser(data) {
 }
 
 
+
+
 module.exports = {
-    createUser
+    signUp
 }

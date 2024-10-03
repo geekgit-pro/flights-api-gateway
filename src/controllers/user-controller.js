@@ -2,10 +2,10 @@ const { StatusCodes } = require('http-status-codes');
 const { UserService } = require('../services');
 const { ErrorResponse, SuccessResponse } = require('../utils/common');
 
-async function createUser(req, res) {
+async function signUp(req, res) {
     try {
         console.log(req.body);
-        const user = await UserService.createUser({
+        const user = await UserService.signUp({
             email: req.body.email,
             password: req.body.password
         });
@@ -23,6 +23,8 @@ async function createUser(req, res) {
     }
 }
 
+
+
 module.exports = {
-    createUser
+    signUp
 }
