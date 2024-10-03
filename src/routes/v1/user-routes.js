@@ -7,7 +7,10 @@ router.post(
     UserController.signUp
 );
 
-
+router.post(
+    '/signIn',
+    UserController.signIn
+);
 
 
 module.exports = router;
