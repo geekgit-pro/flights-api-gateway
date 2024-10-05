@@ -17,12 +17,18 @@ app.use(limiter);
 
 app.use('/flightsService', createProxyMiddleware({
     target: ServerConfig.FLIGHT_SERVICE,
-    changeOrigin: true
+    changeOrigin: true,
+    onProxyReq: (proxyReq, req, res) => {
+        console.log(`Proxying request to FLIGHT_SERVICE: ${req.url}`);
+    }
 }));
 
 app.use('/bookingsService', createProxyMiddleware({
     target: ServerConfig.BOOKING_SERVICE,
-    changeOrigin: true
+    changeOrigin: true,
+    onProxyReq: (proxyReq, req, res) => {
+        console.log(`Proxying request to BOOKING_SERVICE: ${req.url}`);
+    }
 }));
 
 const apiRoutes = require('./routes');
