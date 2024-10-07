@@ -14,6 +14,9 @@ app.use(express.urlencoded({ extended: true}));
 
 
 app.use(limiter);
+const router = express.Router();
+const apiRoutes = require('./routes');
+app.use('/api', apiRoutes);
 
 app.use('/flightsService', createProxyMiddleware({
     target: ServerConfig.FLIGHT_SERVICE,
@@ -30,12 +33,6 @@ app.use('/bookingsService', createProxyMiddleware({
         console.log(`Proxying request to BOOKING_SERVICE: ${req.url}`);
     }
 }));
-
-const apiRoutes = require('./routes');
-
-const router = express.Router();
-
-app.use('/api', apiRoutes);
 
 app.listen(ServerConfig.PORT, ()=> {
     console.log(`Successfully started the server at ${ServerConfig.PORT}`);
